@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" pages="7">
   <diagram name="Self-Attention" id="QMz4kuEsMSJrU-Kythlj">
-    <mxGraphModel dx="1545" dy="865" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="1255" dy="703" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -1032,6 +1032,36 @@
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-274" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 33px;&quot;&gt;V&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="60" x="1280" y="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-275" edge="1" parent="1" source="TVxcggq9p2Fh93a_9qWg-53" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=6;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="780" y="2019.5789473684213" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-276" edge="1" parent="1" source="TVxcggq9p2Fh93a_9qWg-46" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=6;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="1720" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-277" edge="1" parent="1" source="TVxcggq9p2Fh93a_9qWg-60" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=6;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="760" y="2360.0000000000005" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-278" edge="1" parent="1" source="TVxcggq9p2Fh93a_9qWg-124" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1130" y="2339.5789473684213" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-280" edge="1" parent="1" source="TVxcggq9p2Fh93a_9qWg-155" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1120" y="2019.5789473684213" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-281" edge="1" parent="1" source="TVxcggq9p2Fh93a_9qWg-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;strokeWidth=7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="1120" y="1699.5789473684213" as="targetPoint" />
+          </mxGeometry>
         </mxCell>
       </root>
     </mxGraphModel>
