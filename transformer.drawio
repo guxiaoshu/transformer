@@ -1286,144 +1286,144 @@
           <mxGeometry height="30" width="60" x="1470" y="2010" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-373" parent="1" style="shape=table;startSize=0;container=1;collapsible=0;childLayout=tableLayout;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="880" width="2084" x="232" y="2330" as="geometry" />
+          <mxGeometry height="807.2509155273438" width="2084" x="232" y="2330" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-374" parent="TVxcggq9p2Fh93a_9qWg-373" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="140" width="2084" as="geometry" />
+          <mxGeometry height="128" width="2084" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-375" parent="TVxcggq9p2Fh93a_9qWg-374" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="140" width="308" as="geometry">
-            <mxRectangle height="140" width="308" as="alternateBounds" />
+          <mxGeometry height="128" width="308" as="geometry">
+            <mxRectangle height="128" width="308" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-376" parent="TVxcggq9p2Fh93a_9qWg-374" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="Q" vertex="1">
-          <mxGeometry height="140" width="590" x="308" as="geometry">
-            <mxRectangle height="140" width="590" as="alternateBounds" />
+          <mxGeometry height="128" width="590" x="308" as="geometry">
+            <mxRectangle height="128" width="590" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-377" parent="TVxcggq9p2Fh93a_9qWg-374" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="K" vertex="1">
-          <mxGeometry height="140" width="595" x="898" as="geometry">
-            <mxRectangle height="140" width="595" as="alternateBounds" />
+          <mxGeometry height="128" width="595" x="898" as="geometry">
+            <mxRectangle height="128" width="595" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-378" parent="TVxcggq9p2Fh93a_9qWg-374" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="V" vertex="1">
-          <mxGeometry height="140" width="591" x="1493" as="geometry">
-            <mxRectangle height="140" width="591" as="alternateBounds" />
+          <mxGeometry height="128" width="591" x="1493" as="geometry">
+            <mxRectangle height="128" width="591" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-379" parent="TVxcggq9p2Fh93a_9qWg-373" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="142" width="2084" y="140" as="geometry" />
+          <mxGeometry height="130" width="2084" y="128" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-380" parent="TVxcggq9p2Fh93a_9qWg-379" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="特朗普" vertex="1">
-          <mxGeometry height="142" width="308" as="geometry">
-            <mxRectangle height="142" width="308" as="alternateBounds" />
+          <mxGeometry height="130" width="308" as="geometry">
+            <mxRectangle height="130" width="308" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-381" parent="TVxcggq9p2Fh93a_9qWg-379" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="&lt;font&gt;1. 我做了什么动作？2. 我有什么喜好？&lt;/font&gt;&lt;div&gt;&lt;font&gt;3. 谁和我有关系？&lt;/font&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="142" width="590" x="308" as="geometry">
-            <mxRectangle height="142" width="590" as="alternateBounds" />
+          <mxGeometry height="130" width="590" x="308" as="geometry">
+            <mxRectangle height="130" width="590" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-382" parent="TVxcggq9p2Fh93a_9qWg-379" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1.人名 / 实体2.句子主语&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;3.美国前总统4.可以发出动作的主体" vertex="1">
-          <mxGeometry height="142" width="595" x="898" as="geometry">
-            <mxRectangle height="142" width="595" as="alternateBounds" />
+          <mxGeometry height="130" width="595" x="898" as="geometry">
+            <mxRectangle height="130" width="595" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-383" parent="TVxcggq9p2Fh93a_9qWg-379" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;1.唐纳德・特朗普 2.美国第 45/47 任总统、共和党人3.&lt;/span&gt;&lt;span style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255)); text-align: center;&quot;&gt;特朗普大厦4.特朗普家族&lt;br&gt;5.特朗普集团&lt;/span&gt;&lt;/div&gt;" vertex="1">
-          <mxGeometry height="142" width="591" x="1493" as="geometry">
-            <mxRectangle height="142" width="591" as="alternateBounds" />
+          <mxGeometry height="130" width="591" x="1493" as="geometry">
+            <mxRectangle height="130" width="591" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-384" parent="TVxcggq9p2Fh93a_9qWg-373" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="140" width="2084" y="282" as="geometry" />
+          <mxGeometry height="128" width="2084" y="258" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-385" parent="TVxcggq9p2Fh93a_9qWg-384" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="喜欢" vertex="1">
-          <mxGeometry height="140" width="308" as="geometry">
-            <mxRectangle height="140" width="308" as="alternateBounds" />
+          <mxGeometry height="128" width="308" as="geometry">
+            <mxRectangle height="128" width="308" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-386" parent="TVxcggq9p2Fh93a_9qWg-384" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1. 谁发出了 &quot;喜欢&quot; 这个动作？（主语）&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;2. 喜欢的对象是什么？（宾语）" vertex="1">
-          <mxGeometry height="140" width="590" x="308" as="geometry">
-            <mxRectangle height="140" width="590" as="alternateBounds" />
+          <mxGeometry height="128" width="590" x="308" as="geometry">
+            <mxRectangle height="128" width="590" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-387" parent="TVxcggq9p2Fh93a_9qWg-384" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="动词 / 谓语&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;情感动词&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;需要主语 + 宾语的及物动词" vertex="1">
-          <mxGeometry height="140" width="595" x="898" as="geometry">
-            <mxRectangle height="140" width="595" as="alternateBounds" />
+          <mxGeometry height="128" width="595" x="898" as="geometry">
+            <mxRectangle height="128" width="595" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="TVxcggq9p2Fh93a_9qWg-388" parent="TVxcggq9p2Fh93a_9qWg-384" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="存储 &quot;喜欢&quot; 的全部语义：&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;对人或事物有好感、表示偏好、主观情感倾向" vertex="1">
-          <mxGeometry height="140" width="591" x="1493" as="geometry">
-            <mxRectangle height="140" width="591" as="alternateBounds" />
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-388" parent="TVxcggq9p2Fh93a_9qWg-384" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="&lt;br&gt;&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;对人或事物有好感、表示偏好、主观情感倾向" vertex="1">
+          <mxGeometry height="128" width="591" x="1493" as="geometry">
+            <mxRectangle height="128" width="591" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-389" parent="TVxcggq9p2Fh93a_9qWg-373" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="142" width="2084" y="422" as="geometry" />
+          <mxGeometry height="130" width="2084" y="386" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-390" parent="TVxcggq9p2Fh93a_9qWg-389" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="喝" vertex="1">
-          <mxGeometry height="142" width="308" as="geometry">
-            <mxRectangle height="142" width="308" as="alternateBounds" />
+          <mxGeometry height="130" width="308" as="geometry">
+            <mxRectangle height="130" width="308" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-391" parent="TVxcggq9p2Fh93a_9qWg-389" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1. 谁在 &quot;喝&quot;？（主语）&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;2. 喝的是什么东西？（宾语）" vertex="1">
-          <mxGeometry height="142" width="590" x="308" as="geometry">
-            <mxRectangle height="142" width="590" as="alternateBounds" />
+          <mxGeometry height="130" width="590" x="308" as="geometry">
+            <mxRectangle height="130" width="590" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-392" parent="TVxcggq9p2Fh93a_9qWg-389" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1.动词 / 谓语2.动作动词&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;3.需要主语 + 宾语的及物动词&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;4.与饮料/液体相关" vertex="1">
-          <mxGeometry height="142" width="595" x="898" as="geometry">
-            <mxRectangle height="142" width="595" as="alternateBounds" />
+          <mxGeometry height="130" width="595" x="898" as="geometry">
+            <mxRectangle height="130" width="595" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-393" parent="TVxcggq9p2Fh93a_9qWg-389" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;align=left;" value="&lt;font style=&quot;font-size: 30px;&quot;&gt;1.&lt;span style=&quot;color: rgb(15, 17, 21); font-family: quote-cjk-patch, Inter, system-ui, -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Oxygen, Ubuntu, Cantarell, &amp;quot;Open Sans&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, sans-serif; background-color: rgb(255, 255, 255);&quot;&gt;摄入液体的物理动作含义&lt;/span&gt;、饮用行为、通常搭配饮料2.&lt;/font&gt;&lt;span style=&quot;font-size: 30px; background-color: rgb(255, 255, 255); color: rgb(15, 17, 21); font-family: quote-cjk-patch, Inter, system-ui, -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Oxygen, Ubuntu, Cantarell, &amp;quot;Open Sans&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;&quot;&gt;大声喊叫，&lt;/span&gt;&lt;span style=&quot;font-size: 30px; background-color: rgb(255, 255, 255); color: rgb(15, 17, 21); font-family: quote-cjk-patch, Inter, system-ui, -apple-system, BlinkMacSystemFont, &amp;quot;Segoe UI&amp;quot;, Roboto, Oxygen, Ubuntu, Cantarell, &amp;quot;Open Sans&amp;quot;, &amp;quot;Helvetica Neue&amp;quot;, sans-serif;&quot;&gt;呵斥、威胁&lt;/span&gt;" vertex="1">
-          <mxGeometry height="142" width="591" x="1493" as="geometry">
-            <mxRectangle height="142" width="591" as="alternateBounds" />
+          <mxGeometry height="130" width="591" x="1493" as="geometry">
+            <mxRectangle height="130" width="591" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-394" parent="TVxcggq9p2Fh93a_9qWg-373" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="140" width="2084" y="564" as="geometry" />
+          <mxGeometry height="127" width="2084" y="516" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-395" parent="TVxcggq9p2Fh93a_9qWg-394" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="可乐" vertex="1">
-          <mxGeometry height="140" width="308" as="geometry">
-            <mxRectangle height="140" width="308" as="alternateBounds" />
+          <mxGeometry height="127" width="308" as="geometry">
+            <mxRectangle height="127" width="308" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-396" parent="TVxcggq9p2Fh93a_9qWg-394" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1. 谁在喝我？&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;2. 谁喜欢我？&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;3. 我是什么动作的对象？" vertex="1">
-          <mxGeometry height="140" width="590" x="308" as="geometry">
-            <mxRectangle height="140" width="590" as="alternateBounds" />
+          <mxGeometry height="127" width="590" x="308" as="geometry">
+            <mxRectangle height="127" width="590" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-397" parent="TVxcggq9p2Fh93a_9qWg-394" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1.名词 / 宾语&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;2.饮品 / 碳酸饮料&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;3.可以被饮用的对象" vertex="1">
-          <mxGeometry height="140" width="595" x="898" as="geometry">
-            <mxRectangle height="140" width="595" as="alternateBounds" />
+          <mxGeometry height="127" width="595" x="898" as="geometry">
+            <mxRectangle height="127" width="595" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-398" parent="TVxcggq9p2Fh93a_9qWg-394" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1.一种碳酸饮料、可口可乐 / 百事可乐&lt;br&gt;2.可口可乐公司" vertex="1">
-          <mxGeometry height="140" width="591" x="1493" as="geometry">
-            <mxRectangle height="140" width="591" as="alternateBounds" />
+          <mxGeometry height="127" width="591" x="1493" as="geometry">
+            <mxRectangle height="127" width="591" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-399" parent="TVxcggq9p2Fh93a_9qWg-373" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;strokeColor=inherit;top=0;left=0;bottom=0;right=0;collapsible=0;dropTarget=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fixedHeader=1;fontSize=32;" value="" vertex="1">
-          <mxGeometry height="176" width="2084" y="704" as="geometry" />
+          <mxGeometry height="164" width="2084" y="643" as="geometry" />
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-400" parent="TVxcggq9p2Fh93a_9qWg-399" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="吗" vertex="1">
-          <mxGeometry height="176" width="308" as="geometry">
-            <mxRectangle height="176" width="308" as="alternateBounds" />
+          <mxGeometry height="164" width="308" as="geometry">
+            <mxRectangle height="164" width="308" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-401" parent="TVxcggq9p2Fh93a_9qWg-399" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1. 整个句子的核心陈述内容是什么？&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;2. 我要对哪个事实进行提问？" vertex="1">
-          <mxGeometry height="176" width="590" x="308" as="geometry">
-            <mxRectangle height="176" width="590" as="alternateBounds" />
+          <mxGeometry height="164" width="590" x="308" as="geometry">
+            <mxRectangle height="164" width="590" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-402" parent="TVxcggq9p2Fh93a_9qWg-399" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1.疑问助词&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;2.句末标记&lt;div style=&quot;font-style: normal; font-variant: normal; font-size-adjust: none; font-language-override: normal; font-kerning: auto; font-optical-sizing: auto; font-feature-settings: normal; font-variation-settings: normal; font-stretch: normal; font-family: ui-sans-serif, system-ui, sans-serif, &amp;quot;Apple Color Emoji&amp;quot;, &amp;quot;Segoe UI Emoji&amp;quot;, &amp;quot;Segoe UI Symbol&amp;quot;, &amp;quot;Noto Color Emoji&amp;quot;; font-size: 16px; line-height: 24px; text-align: start; flex: 0 1 auto; flex-direction: row; justify-content: normal; align-items: normal; padding: 0px; margin: 0px; background: none 0% 0% / auto repeat scroll padding-box border-box rgba(0, 0, 0, 0);&quot;&gt;&lt;/div&gt;3.表示一般疑问句" vertex="1">
-          <mxGeometry height="176" width="595" x="898" as="geometry">
-            <mxRectangle height="176" width="595" as="alternateBounds" />
+          <mxGeometry height="164" width="595" x="898" as="geometry">
+            <mxRectangle height="164" width="595" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
         <mxCell id="TVxcggq9p2Fh93a_9qWg-403" parent="TVxcggq9p2Fh93a_9qWg-399" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;strokeColor=inherit;overflow=hidden;fillColor=none;top=0;left=0;bottom=0;right=0;pointerEvents=1;fontSize=32;" value="1.用在句末表示疑问、将陈述句转为一般疑问句" vertex="1">
-          <mxGeometry height="176" width="591" x="1493" as="geometry">
-            <mxRectangle height="176" width="591" as="alternateBounds" />
+          <mxGeometry height="164" width="591" x="1493" as="geometry">
+            <mxRectangle height="164" width="591" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
       </root>
