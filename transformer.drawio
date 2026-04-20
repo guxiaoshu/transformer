@@ -1877,6 +1877,9 @@
         <mxCell id="TVxcggq9p2Fh93a_9qWg-570" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=19;" value="5" vertex="1">
           <mxGeometry height="30" width="60" x="1177" y="2532.08" as="geometry" />
         </mxCell>
+        <mxCell id="TVxcggq9p2Fh93a_9qWg-571" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 27px;&quot;&gt;QK&lt;sup style=&quot;&quot;&gt;T&lt;/sup&gt;&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="60" x="1030" y="2370" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
