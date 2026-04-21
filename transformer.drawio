@@ -5101,9 +5101,6 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="PNF1B5mvsCq2IrpnAFVx-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 50px;&quot;&gt;Transformer宏观理解&lt;/font&gt;" vertex="1">
-          <mxGeometry height="120" width="580" x="70" y="50" as="geometry" />
-        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
