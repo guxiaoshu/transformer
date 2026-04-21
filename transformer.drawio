@@ -1,6 +1,6 @@
 <mxfile host="app.diagrams.net" pages="7">
   <diagram name="Self-Attention" id="QMz4kuEsMSJrU-Kythlj">
-    <mxGraphModel dx="1388" dy="744" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="5552" dy="2976" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2646,7 +2646,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Multi-Head Attention" id="nNudQAhZGQoW35WYA-dz">
-    <mxGraphModel dx="1030" dy="562" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="1388" dy="744" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="hiJ98nGNObLhHQ1keLpH-0" />
         <mxCell id="hiJ98nGNObLhHQ1keLpH-1" parent="hiJ98nGNObLhHQ1keLpH-0" />
