@@ -2649,7 +2649,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Multi-Head Attention" id="nNudQAhZGQoW35WYA-dz">
-    <mxGraphModel dx="7550" dy="3720" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2000" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="5814" dy="3166" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2000" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="hiJ98nGNObLhHQ1keLpH-0" />
         <mxCell id="hiJ98nGNObLhHQ1keLpH-1" parent="hiJ98nGNObLhHQ1keLpH-0" />
@@ -5322,7 +5322,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="btH06wyHrt1OK-Kj29LO" name="EnCoder">
-    <mxGraphModel dx="10067" dy="4960" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="8000" pageHeight="8000" math="0" shadow="0">
+    <mxGraphModel dx="4845" dy="2638" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="8000" pageHeight="8000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
