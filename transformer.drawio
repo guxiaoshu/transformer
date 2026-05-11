@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" pages="7">
+<mxfile host="app.diagrams.net" pages="8">
   <diagram id="4gmu75Tr-zrAVvyBiAZH" name="神经网络">
     <mxGraphModel dx="899" dy="497" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="2000" pageHeight="2000" math="0" shadow="0">
       <root>
@@ -96463,6 +96463,14 @@
         <mxCell id="veykGR9qdl5QfEgXQ4zX-15" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 100px;&quot;&gt;*&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="60" x="3415" y="1630.51" as="geometry" />
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="N3Vu6RwSXnMbhPPsc7OW" name="草稿">
+    <mxGraphModel dx="5648" dy="2976" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
       </root>
     </mxGraphModel>
   </diagram>
