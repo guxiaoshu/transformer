@@ -290,7 +290,7 @@
     </mxGraphModel>
   </diagram>
   <diagram name="Self-Attention" id="QMz4kuEsMSJrU-Kythlj">
-    <mxGraphModel dx="3966" dy="2126" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="3530" dy="1860" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="4000" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -2935,11 +2935,47 @@
         <mxCell id="tYtndrCBWd_jA-izKk0i-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;=&amp;nbsp; &amp;nbsp; Z&lt;/font&gt;" vertex="1">
           <mxGeometry height="30" width="60" x="2953" y="2535.62" as="geometry" />
         </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="Attention" vertex="1">
+          <mxGeometry height="38" width="103" x="2522" y="122" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="关系注意力机制" vertex="1">
+          <mxGeometry height="36" width="102" x="2339" y="216" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="特征注意力机制" vertex="1">
+          <mxGeometry height="36" width="102" x="2522" y="216" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-4" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="结构注意力机制" vertex="1">
+          <mxGeometry height="36" width="102" x="2678" y="216" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;Self-Attn&lt;/div&gt;&lt;div&gt;Cross-Attn&lt;/div&gt;&lt;div&gt;Linear&lt;/div&gt;&lt;div&gt;Multi-Head&lt;/div&gt;&lt;div&gt;Block&lt;/div&gt;&lt;div&gt;Flash&lt;/div&gt;" vertex="1">
+          <mxGeometry height="151" width="169" x="2298" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-6" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;SE-Net&lt;/div&gt;&lt;div&gt;ECA&lt;/div&gt;&lt;div&gt;CoordAttn&lt;/div&gt;&lt;div&gt;CBAM&lt;/div&gt;&lt;div&gt;SK-NetTriplet&lt;/div&gt;" vertex="1">
+          <mxGeometry height="130" width="128" x="2491" y="260.5" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div&gt;GAT&lt;/div&gt;&lt;div&gt;GATv2&lt;/div&gt;&lt;div&gt;ross-Modal&lt;/div&gt;&lt;div&gt;Relational&lt;/div&gt;&lt;div&gt;Sparse-GAT&lt;/div&gt;&lt;div&gt;HAN&lt;/div&gt;" vertex="1">
+          <mxGeometry height="140" width="152" x="2656" y="255.5" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-8" edge="1" parent="1" source="r7EAY892quah1u_0p1NW-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.423;entryY=-0.005;entryDx=0;entryDy=0;entryPerimeter=0;" target="r7EAY892quah1u_0p1NW-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-9" edge="1" parent="1" source="r7EAY892quah1u_0p1NW-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="r7EAY892quah1u_0p1NW-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2744" y="168" as="sourcePoint" />
+            <mxPoint x="2552" y="224" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="r7EAY892quah1u_0p1NW-10" edge="1" parent="1" source="r7EAY892quah1u_0p1NW-1" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="r7EAY892quah1u_0p1NW-4">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="2767" y="171" as="sourcePoint" />
+            <mxPoint x="2575" y="227" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
   <diagram name="Multi-Head Attention" id="nNudQAhZGQoW35WYA-dz">
-    <mxGraphModel dx="3897" dy="2152" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2000" background="#FFFFFF" math="0" shadow="0">
+    <mxGraphModel dx="4034" dy="2126" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4000" pageHeight="2000" background="#FFFFFF" math="0" shadow="0">
       <root>
         <mxCell id="hiJ98nGNObLhHQ1keLpH-0" />
         <mxCell id="hiJ98nGNObLhHQ1keLpH-1" parent="hiJ98nGNObLhHQ1keLpH-0" />
@@ -3997,9 +4033,6 @@
         </mxCell>
         <mxCell id="5jagrXhsfpmVVeECW4dC-237" parent="hiJ98nGNObLhHQ1keLpH-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=26;" value="6" vertex="1">
           <mxGeometry height="30" width="60" x="903" y="676" as="geometry" />
-        </mxCell>
-        <mxCell id="1hE6AfJ2ZxgGcCpf5eJy-1" edge="1" parent="hiJ98nGNObLhHQ1keLpH-1" source="5jagrXhsfpmVVeECW4dC-238" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="1hE6AfJ2ZxgGcCpf5eJy-0" value="">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="5jagrXhsfpmVVeECW4dC-238" parent="hiJ98nGNObLhHQ1keLpH-1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;fontSize=26;" value="4" vertex="1">
           <mxGeometry height="30" width="60" x="813" y="796" as="geometry" />
