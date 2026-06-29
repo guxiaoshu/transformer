@@ -101094,15 +101094,29 @@
     </mxGraphModel>
   </diagram>
   <diagram id="PSiAzF3gZKNrCozWdrQP" name="H100">
-    <mxGraphModel dx="5140" dy="2810" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
+    <mxGraphModel dx="2937" dy="1606" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="5000" pageHeight="5000" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <UserObject label="&lt;img src=&quot;https://pic4.zhimg.com/v2-8a21ad165e023690b4f9c57b37131749_1440w.jpg&quot;&gt;" id="Nn2Ufctpv34lPWpJt9GP-1">
           <mxCell parent="1" style="text;whiteSpace=wrap;html=1;" vertex="1">
-            <mxGeometry height="40" width="30" x="630" y="530" as="geometry" />
+            <mxGeometry height="740" width="1450" x="210" y="150" as="geometry" />
           </mxCell>
         </UserObject>
+        <UserObject label="&lt;img src=&quot;https://pic4.zhimg.com/v2-9648c8936c18854786163bcbac09a92f_1440w.jpg&quot;&gt;" id="Nn2Ufctpv34lPWpJt9GP-4">
+          <mxCell parent="1" style="text;whiteSpace=wrap;html=1;" vertex="1">
+            <mxGeometry height="1690" width="1160" x="1200" y="990" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="Nn2Ufctpv34lPWpJt9GP-5" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 50px; color: rgb(255, 255, 255);&quot;&gt;寄存器&lt;/font&gt;" vertex="1">
+          <mxGeometry height="190" width="220" x="1220" y="1150" as="geometry" />
+        </mxCell>
+        <mxCell id="Nn2Ufctpv34lPWpJt9GP-7" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div class=&quot;lake-content&quot;&gt;&lt;strong&gt;&lt;span class=&quot;ne-text&quot; style=&quot;background-color: rgba(0, 0, 0, 0);&quot;&gt;&lt;font style=&quot;font-size: 50px; color: rgb(255, 255, 255);&quot;&gt;Tensor Core&lt;/font&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="220" x="1560" y="1280" as="geometry" />
+        </mxCell>
+        <mxCell id="Nn2Ufctpv34lPWpJt9GP-8" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;div class=&quot;lake-content&quot;&gt;&lt;font style=&quot;font-size: 50px; color: rgb(255, 255, 255);&quot;&gt;&lt;/font&gt;&lt;div class=&quot;lake-content&quot;&gt;&lt;strong&gt;&lt;span class=&quot;ne-text&quot; style=&quot;background-color: rgba(0, 0, 0, 0);&quot;&gt;&lt;font style=&quot;font-size: 50px; color: rgb(255, 255, 255);&quot;&gt;CUDA Core&lt;/font&gt;&lt;/span&gt;&lt;/strong&gt;&lt;/div&gt;&lt;/div&gt;" vertex="1">
+          <mxGeometry height="190" width="220" x="1560" y="1570" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
