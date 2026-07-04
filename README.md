@@ -1,2 +1,2 @@
 # transformer
-一口气手搓transformer
+手搓transformer
