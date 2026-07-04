@@ -88,7 +88,8 @@ def cmd_train(resume: bool = False):
 # 推理命令
 # ==============================================================================
 
-def cmd_infer(text: str = None, show_weights: bool = False):
+def cmd_infer(text: str = None, show_weights: bool = False,
+              use_beam: bool = False):
     """
     【推理模式 — 加载模型进行翻译】
 
@@ -96,6 +97,7 @@ def cmd_infer(text: str = None, show_weights: bool = False):
     有参数 → 单句翻译
 
     --weight → 额外打印注意力权重热力图
+    --beam   → 使用 Beam Search（默认贪心 + KV Cache）
     """
     model_path = os.path.join(config.save_dir, "best_model.pt")
 
@@ -107,7 +109,8 @@ def cmd_infer(text: str = None, show_weights: bool = False):
     if text:
         # 单句翻译
         single_translate(model_path, config.tokenizer_path,
-                         text, show_weights=show_weights)
+                         text, show_weights=show_weights,
+                         use_beam=use_beam)
     else:
         # 交互模式
         interactive_inference(model_path, config.tokenizer_path)
@@ -244,6 +247,8 @@ def main():
                          help="要翻译的中文文本（不填则进入交互模式）")
     p_infer.add_argument("--weight", action="store_true",
                          help="显示注意力权重")
+    p_infer.add_argument("--beam", action="store_true",
+                         help="使用 Beam Search 解码（默认贪心 + KV Cache）")
 
     # test 子命令
     subparsers.add_parser("test", help="测试所有模块")
@@ -255,7 +260,8 @@ def main():
     if args.command == "train":
         cmd_train(resume=args.resume)
     elif args.command == "infer":
-        cmd_infer(text=args.text, show_weights=args.weight)
+        cmd_infer(text=args.text, show_weights=args.weight,
+                  use_beam=args.beam)
     elif args.command == "test":
         cmd_test()
     else:

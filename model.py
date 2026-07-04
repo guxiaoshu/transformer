@@ -305,17 +305,30 @@ class MultiHeadAttention(nn.Module):
         return x.view(B, seq_len, self.d_model)   # → (B, seq_len, d_model)
 
     def forward(self, query: torch.Tensor, key: torch.Tensor, value: torch.Tensor,
-                mask: torch.Tensor = None, verbose: bool = False) -> torch.Tensor:
+                mask: torch.Tensor = None, kv_cache: dict = None,
+                verbose: bool = False) -> torch.Tensor:
         """
-        【前向传播 — 完整的注意力计算流程】
+        【前向传播 — 完整的注意力计算流程，支持 KV Cache】
 
         【参数说明】
           query: (B, Q_len, D)  查询 — "我在找什么？"
           key:   (B, K_len, D)  键   — "我是什么？"
+                                （交叉注意力 KV Cache 模式下可为 None）
           value: (B, V_len, D)  值   — "我有什么？"
+                                （交叉注意力 KV Cache 模式下可为 None）
           mask:  (B,1,1,K_len) 或 (1,1,Q_len,K_len)
                  - 值0的位置 → 有效（不修改attention分数）
                  - 值-inf的位置 → 屏蔽（softmax后权重≈0）
+          kv_cache: dict or None — {"k": Tensor或None, "v": Tensor或None}
+                 None → 训练模式，完整计算 K/V
+                 非None + key非None → 解码器自注意力模式：
+                   只计算新 token 的 K/V，追加到缓存
+                   首次调用时 cache["k"] 为 None → 创建初始缓存
+                 非None + key为None → 解码器交叉注意力模式：
+                   直接使用预计算的编码器 K/V 缓存，不追加
+                 【设计考量】用 dict 传引用而非返回值：
+                   缓存在 DecoderLayer → decode_step 调用链中被原地修改，
+                   不需要改动所有中间函数的返回值签名。
           verbose: 如果True，打印每一步的形状
 
         【自注意力 vs 交叉注意力】
@@ -328,14 +341,53 @@ class MultiHeadAttention(nn.Module):
         B = query.size(0)
 
         if verbose:
-            print(f"  [MultiHeadAttn] Q:{query.shape} K:{key.shape} V:{value.shape}")
+            k_shape = key.shape if key is not None else "cached"
+            v_shape = value.shape if value is not None else "cached"
+            cache_info = " [KV Cache]" if kv_cache is not None else ""
+            print(f"  [MultiHeadAttn] Q:{query.shape} K:{k_shape} V:{v_shape}{cache_info}")
 
         # ── 步骤1：线性投影 → 拆头 ──
-        # 三个独立的线性变换，把输入投影到 Q/K/V 空间
-        # 然后拆成多头形状
+        # Q 总是需要完整计算（query 每次都是新的）
         Q = self._split_heads(self.W_q(query))    # (B, H, Q_len, d_k)
-        K = self._split_heads(self.W_k(key))      # (B, H, K_len, d_k)
-        V = self._split_heads(self.W_v(value))    # (B, H, V_len, d_k)
+
+        # ── K/V 投影：根据是否使用 KV Cache 采用不同策略 ──
+        if kv_cache is not None and key is not None:
+            # ═══════════════════════════════════════════════════════
+            # 模式 A：解码器「自注意力」+ KV Cache
+            # ═══════════════════════════════════════════════════════
+            # 只计算新 token 的 K/V（通常只有 1 个 token），
+            # 然后追加到缓存中和历史 token 拼接。
+            # 这避免了"第 20 步重算前 19 个 token 的 K/V"。
+            K_new = self._split_heads(self.W_k(key))      # (B, H, 1, d_k)
+            V_new = self._split_heads(self.W_v(value))    # (B, H, 1, d_k)
+
+            if kv_cache["k"] is not None:
+                # 缓存中已有历史 token → 沿序列维度拼接
+                K = torch.cat([kv_cache["k"], K_new], dim=2)  # (B, H, t+1, d_k)
+                V = torch.cat([kv_cache["v"], V_new], dim=2)
+            else:
+                # 第一次调用，缓存为空 → 直接使用新 K/V
+                K, V = K_new, V_new
+
+            # 【关键】原地更新缓存 — dict 传引用，调用方自动看到变化
+            kv_cache["k"] = K
+            kv_cache["v"] = V
+
+        elif kv_cache is not None and key is None:
+            # ═══════════════════════════════════════════════════════
+            # 模式 B：解码器「交叉注意力」+ KV Cache
+            # ═══════════════════════════════════════════════════════
+            # 编码器输出在推理时不变 → K/V 在 encode_for_inference()
+            # 中已预计算并存入缓存。直接使用，不追加。
+            K = kv_cache["k"]   # (B, H, S, d_k)  S=源语言长度，固定不变
+            V = kv_cache["v"]   # (B, H, S, d_k)
+
+        else:
+            # ═══════════════════════════════════════════════════════
+            # 模式 C：训练模式 / 旧推理模式 — 完整计算
+            # ═══════════════════════════════════════════════════════
+            K = self._split_heads(self.W_k(key))      # (B, H, K_len, d_k)
+            V = self._split_heads(self.W_v(value))    # (B, H, V_len, d_k)
 
         if verbose:
             print(f"    → 拆头后 Q:{Q.shape} K:{K.shape} V:{V.shape}")
@@ -354,10 +406,6 @@ class MultiHeadAttention(nn.Module):
         # mask 加到 scores 上：
         #   - 有效位置 (mask=0)   → 分数不变
         #   - 屏蔽位置 (mask=-inf) → 分数变为 -inf → softmax后=0
-        # 为什么是加而不是乘？
-        #   因为 softmax 的定义：e^x / Σe^x
-        #   如果 x=-inf，则 e^(-inf)=0，达到了"完全屏蔽"的效果
-        #   如果用乘法（×0），e^0=1，仍然有非零权重
         if mask is not None:
             scores = scores + mask
 
@@ -367,7 +415,6 @@ class MultiHeadAttention(nn.Module):
         attn_weights = F.softmax(scores, dim=-1)
 
         # 对注意力权重做 dropout
-        # 随机关闭一些注意力连接 → 强迫模型学习多样化的关注模式
         attn_weights = self.dropout(attn_weights)
 
         # 保存注意力权重（不参与梯度），供后续可视化
@@ -376,14 +423,12 @@ class MultiHeadAttention(nn.Module):
         # ── 步骤5：加权求和 ──
         # attn_weights · V: (B,H,Q_len,K_len) × (B,H,K_len,d_k) → (B,H,Q_len,d_k)
         # 含义：对每个 query，把所有 value 按注意力权重加权求和
-        # 结果 context 是"query 从所有 key 处收集到的信息"
         context = torch.matmul(attn_weights, V)
 
         if verbose:
             print(f"    → scores:{scores.shape} attn:{attn_weights.shape} context:{context.shape}")
 
         # ── 步骤6：合并头 → 输出投影 ──
-        # 把多头拼回 d_model 维度，然后过一个线性层
         output = self.W_o(self._combine_heads(context))
 
         if verbose:
@@ -521,32 +566,54 @@ class EncoderLayer(nn.Module):
         self.dropout = nn.Dropout(p=dropout)
 
     def forward(self, x: torch.Tensor, src_mask: torch.Tensor = None,
-                verbose: bool = False) -> torch.Tensor:
+                verbose: bool = False, norm_mode: str = "post") -> torch.Tensor:
         """
-        【前向传播】
+        【前向传播 — 支持 Post-Norm 和 Pre-Norm】
+
+        【两种 Norm 模式对比】
+          Post-Norm (原论文):  x = Norm(x + Sublayer(x))
+            → 先做子层，加残差，最后归一化
+          Pre-Norm  (现代):   x = x + Sublayer(Norm(x))
+            → 先归一化，再做子层，加残差
+            → 训练更稳定，梯度流更顺畅
+            → GPT、Llama 等现代模型均使用 Pre-Norm
 
         【参数说明】
           x: (B, S, D)  输入序列（来自上一层编码器或词嵌入）
           src_mask: (B, 1, 1, S)  源语言padding mask
                     0=有效, -inf=屏蔽
           verbose: 是否打印形状
+          norm_mode: "post" | "pre"
 
         【返回】
           (B, S, D)  丰富了语义信息的序列表示
         """
         if verbose:
-            print(f"  [EncoderLayer] 输入: {x.shape}")
+            print(f"  [EncoderLayer] 输入: {x.shape} (norm={norm_mode})")
 
-        # ── 子层1：自注意力 + 残差 + LayerNorm ──
-        # self.self_attn(x, x, x): Q=K=V=x → 自己注意自己
-        attn_out = self.self_attn(x, x, x, mask=src_mask, verbose=verbose)
-        # 残差连接：x + dropout(attn_out)
-        # 然后 LayerNorm 归一化
-        x = self.norm1(x + self.dropout(attn_out))
+        if norm_mode == "pre":
+            # ═══════════════════════════════════════════════════════
+            # Pre-Norm（现代做法）
+            # 公式：x = x + Sublayer(Norm(x))
+            # 优点：训练更稳定，对学习率不那么敏感
+            # ═══════════════════════════════════════════════════════
+            attn_out = self.self_attn(
+                self.norm1(x), self.norm1(x), self.norm1(x),
+                mask=src_mask, verbose=verbose
+            )
+            x = x + self.dropout(attn_out)
 
-        # ── 子层2：FFN + 残差 + LayerNorm ──
-        ffn_out = self.ffn(x, verbose=verbose)
-        x = self.norm2(x + self.dropout(ffn_out))
+            x = x + self.dropout(self.ffn(self.norm2(x), verbose=verbose))
+        else:
+            # ═══════════════════════════════════════════════════════
+            # Post-Norm（原论文）
+            # 公式：x = Norm(x + Sublayer(x))
+            # ═══════════════════════════════════════════════════════
+            attn_out = self.self_attn(x, x, x, mask=src_mask, verbose=verbose)
+            x = self.norm1(x + self.dropout(attn_out))
+
+            ffn_out = self.ffn(x, verbose=verbose)
+            x = self.norm2(x + self.dropout(ffn_out))
 
         if verbose:
             print(f"  [EncoderLayer] 输出: {x.shape}")
@@ -598,42 +665,90 @@ class DecoderLayer(nn.Module):
 
     def forward(self, x: torch.Tensor, enc_out: torch.Tensor,
                 tgt_mask: torch.Tensor = None, src_mask: torch.Tensor = None,
-                verbose: bool = False) -> torch.Tensor:
+                verbose: bool = False, norm_mode: str = "post",
+                self_kv_cache: dict = None, cross_kv_cache: dict = None
+                ) -> torch.Tensor:
         """
-        【前向传播】
+        【前向传播 — 支持 Post-Norm / Pre-Norm + KV Cache】
 
         【参数说明】
-          x: (B, T, D)        解码器当前输入（训练时=shifted targets，推理时=历史生成token）
-          enc_out: (B, S, D)  编码器输出（整个源语言序列的编码）
-          tgt_mask: (B,1,T,T) 因果mask（下三角=0, 上三角=-inf）
+          x: (B, T, D)        解码器当前输入
+          enc_out: (B, S, D)  编码器输出（交叉注意力 KV Cache 模式下可忽略）
+          tgt_mask: (B,1,T,T) 因果mask（KV Cache 模式下单 token 时为 None）
           src_mask: (B,1,1,S) 源语言padding mask
           verbose: 是否打印形状
-
-        【tgt_mask 为什么是因果的】
-          训练时解码器一次性看到整个目标序列（Teacher Forcing），
-          但必须防止第i个位置"偷看"第i+1个位置的答案。
-          因果 mask 确保第i个位置只能看到位置1..i。
+          norm_mode: "post" | "pre"
+          self_kv_cache: dict or None — 自注意力 KV 缓存（原地更新）
+          cross_kv_cache: dict or None — 交叉注意力 KV 缓存（预计算，不更新）
 
         【返回】
           (B, T, D)  每个位置的下一个token特征
         """
         if verbose:
-            print(f"  [DecoderLayer] 输入: {x.shape}, enc_out: {enc_out.shape}")
+            cache_info = " [KV Cache]" if self_kv_cache is not None else ""
+            print(f"  [DecoderLayer] 输入: {x.shape}, enc_out: {enc_out.shape if enc_out is not None else 'cached'}"
+                  f" (norm={norm_mode}){cache_info}")
 
-        # ── 子层1：掩码自注意力 ──
-        # Q=K=V=x，但加因果mask防止看到未来token
-        attn_out = self.self_attn(x, x, x, mask=tgt_mask, verbose=verbose)
-        x = self.norm1(x + self.dropout(attn_out))
+        if norm_mode == "pre":
+            # ═══════════════════════════════════════════════════════
+            # Pre-Norm 解码器层
+            # 注意：对三个子层都用 Pre-Norm，且 KV Cache 模式
+            #       下交叉注意力不传 enc_out（传 None 给 key/value）
+            # ═══════════════════════════════════════════════════════
 
-        # ── 子层2：交叉注意力 ──
-        # Q=解码器当前状态, K=V=编码器输出
-        # 让解码器"查阅"源语言信息
-        cross_out = self.cross_attn(x, enc_out, enc_out, mask=src_mask, verbose=verbose)
-        x = self.norm2(x + self.dropout(cross_out))
+            # 子层1：掩码自注意力（Pre-Norm）
+            normed = self.norm1(x)
+            attn_out = self.self_attn(
+                normed, normed, normed,
+                mask=tgt_mask, kv_cache=self_kv_cache, verbose=verbose
+            )
+            x = x + self.dropout(attn_out)
 
-        # ── 子层3：FFN ──
-        ffn_out = self.ffn(x, verbose=verbose)
-        x = self.norm3(x + self.dropout(ffn_out))
+            # 子层2：交叉注意力（Pre-Norm）
+            normed = self.norm2(x)
+            if cross_kv_cache is not None:
+                # KV Cache 模式：编码器 K/V 已预计算，传 key=None 让注意力层直接读缓存
+                cross_out = self.cross_attn(
+                    normed, None, None,
+                    mask=src_mask, kv_cache=cross_kv_cache, verbose=verbose
+                )
+            else:
+                cross_out = self.cross_attn(
+                    normed, enc_out, enc_out,
+                    mask=src_mask, verbose=verbose
+                )
+            x = x + self.dropout(cross_out)
+
+            # 子层3：FFN（Pre-Norm）
+            x = x + self.dropout(self.ffn(self.norm3(x), verbose=verbose))
+        else:
+            # ═══════════════════════════════════════════════════════
+            # Post-Norm 解码器层（原论文）
+            # ═══════════════════════════════════════════════════════
+
+            # 子层1：掩码自注意力
+            attn_out = self.self_attn(
+                x, x, x, mask=tgt_mask, kv_cache=self_kv_cache, verbose=verbose
+            )
+            x = self.norm1(x + self.dropout(attn_out))
+
+            # 子层2：交叉注意力
+            if cross_kv_cache is not None:
+                # KV Cache 模式：使用预计算的编码器 K/V
+                cross_out = self.cross_attn(
+                    x, None, None,
+                    mask=src_mask, kv_cache=cross_kv_cache, verbose=verbose
+                )
+            else:
+                cross_out = self.cross_attn(
+                    x, enc_out, enc_out,
+                    mask=src_mask, verbose=verbose
+                )
+            x = self.norm2(x + self.dropout(cross_out))
+
+            # 子层3：FFN
+            ffn_out = self.ffn(x, verbose=verbose)
+            x = self.norm3(x + self.dropout(ffn_out))
 
         if verbose:
             print(f"  [DecoderLayer] 输出: {x.shape}")
@@ -687,6 +802,13 @@ class Seq2SeqTransformer(nn.Module):
         super().__init__()
         self.pad_idx = pad_idx
         self.d_model = d_model
+
+        # ── Norm 模式（从 config 读取，默认为 post）──
+        try:
+            from config import config
+            self.norm_mode = config.norm_mode
+        except ImportError:
+            self.norm_mode = "post"
 
         # ── 共享词嵌入矩阵 ──
         # padding_idx=0: PAD token 的嵌入始终为0，梯度始终为0
@@ -905,7 +1027,8 @@ class Seq2SeqTransformer(nn.Module):
         for i, layer in enumerate(self.encoder_layers):
             if verbose:
                 print(f"\n[Encoder Layer {i+1}/{len(self.encoder_layers)}]")
-            x = layer(x, src_mask=src_attn_mask, verbose=verbose)
+            x = layer(x, src_mask=src_attn_mask, verbose=verbose,
+                      norm_mode=self.norm_mode)
         enc_out = x   # (B, S, D)
 
         if verbose:
@@ -919,7 +1042,7 @@ class Seq2SeqTransformer(nn.Module):
                 print(f"\n[Decoder Layer {i+1}/{len(self.decoder_layers)}]")
             x = layer(x, enc_out,
                       tgt_mask=tgt_attn_mask, src_mask=src_attn_mask,
-                      verbose=verbose)
+                      verbose=verbose, norm_mode=self.norm_mode)
         dec_out = x
 
         if verbose:
@@ -942,75 +1065,161 @@ class Seq2SeqTransformer(nn.Module):
     # ==========================================================================
 
     def encode_for_inference(self, src: torch.Tensor, src_mask: torch.Tensor,
-                             verbose: bool = False) -> torch.Tensor:
+                             verbose: bool = False,
+                             return_caches: bool = False) -> torch.Tensor:
         """
         【推理用编码器】
         和训练时编码器的区别：不重复计算（推理时只跑一次编码器）。
-        训练时每个句子对跑一次编码器，推理时也跑一次，
-        但推理时解码器要循环多次。
+
+        【return_caches 参数】
+          当 return_caches=True 时，额外预计算所有解码器层的交叉注意力
+          K/V 缓存。因为编码器输出 enc_out 在推理过程中不变，
+          交叉注意力的 K = W_k(enc_out) 和 V = W_v(enc_out) 只需计算一次。
+          这省去了每个 decode step 都重新对 enc_out 做线性投影。
+
+          返回格式：
+            enc_out: (1, S, D)
+            cross_kv_caches: [{"k": ..., "v": ...}, ...] — 每层一个缓存
 
         【参数说明】
           src: (1, S)  单个句子
           src_mask: (1, S)
+          return_caches: 是否预计算交叉注意力缓存
 
         【返回】
-          enc_out: (1, S, D)  编码器输出（缓存用于解码器每次查询）
+          enc_out: (1, S, D)  编码器输出
+          或 (enc_out, cross_kv_caches) 当 return_caches=True
         """
         src_emb = self.embedding(src) * self.embed_scale
         src_emb = self.pos_encoding(src_emb)
         src_attn_mask = self.create_padding_mask(src_mask)
 
         for layer in self.encoder_layers:
-            src_emb = layer(src_emb, src_mask=src_attn_mask)
+            src_emb = layer(src_emb, src_mask=src_attn_mask,
+                           norm_mode=self.norm_mode)
 
-        return src_emb   # enc_out
+        enc_out = src_emb
+
+        if return_caches:
+            # ── 预计算所有解码器层的交叉注意力 K/V ──
+            # 为什么可以预计算？交叉注意力的 Q 来自解码器（每步变化），
+            # 但 K 和 V 来自编码器输出（整个推理过程不变）。
+            # 预计算后每个 decode step 直接用，避免重复的 W_k/W_v 投影。
+            cross_kv_caches = []
+            for layer in self.decoder_layers:
+                # 对 enc_out 做线性投影 → 拆成多头 → 存入缓存
+                cache = {
+                    "k": layer.cross_attn._split_heads(
+                        layer.cross_attn.W_k(enc_out)
+                    ),  # (1, H, S, d_k)
+                    "v": layer.cross_attn._split_heads(
+                        layer.cross_attn.W_v(enc_out)
+                    ),  # (1, H, S, d_k)
+                }
+                cross_kv_caches.append(cache)
+            return enc_out, cross_kv_caches
+
+        return enc_out
 
     def decode_step(self, tgt_token: torch.Tensor, enc_out: torch.Tensor,
                     tgt_mask: torch.Tensor, src_mask: torch.Tensor,
-                    past_len: int, verbose: bool = False) -> torch.Tensor:
+                    past_len: int = 0, verbose: bool = False,
+                    self_kv_caches: list = None,
+                    cross_kv_caches: list = None) -> torch.Tensor:
         """
-        【推理用单步解码器】
-        自回归生成：每次调用生成一个token。
+        【推理用单步解码器 — 支持 KV Cache】
 
-        【为什么逐步生成】
-          训练时用Teacher Forcing，整个目标序列一次性输入。
-          推理时没有"正确答案"可用，只能自己生成了上一步的token,
-          再把它追加到输入序列末尾，预测下一个token。
+        【两种模式】
 
-        【注意：效率问题】
-          每次调用都要重算整个序列（包括历史token），复杂度 O(T²)。
-          生产系统会用 KV Cache 优化，缓存已计算的 K/V，避免重算。
-          教育版为了代码清晰省略了这个优化。
+          ╔══════════════════════════════════════════════════════════╗
+          ║  模式 A：KV Cache 模式                                  ║
+          ║  (self_kv_caches is not None)                          ║
+          ║                                                        ║
+          ║  tgt_token: [1, 1] — 只有最新生成的 token              ║
+          ║  past_len: 当前 token 在序列中的位置索引（0-based）      ║
+          ║  self_kv_caches: 初始化为 [{"k":None,"v":None}, ...]  ║
+          ║                  每层各一个，首次调用后自动填充           ║
+          ║  cross_kv_caches: encode_for_inference() 预计算         ║
+          ║                                                        ║
+          ║  复杂度：每步 O(T) → 总 O(T²)（vs 无缓存的 O(T³)）      ║
+          ╚══════════════════════════════════════════════════════════╝
+
+          ╔══════════════════════════════════════════════════════════╗
+          ║  模式 B：原始模式（兼容旧代码和 Beam Search）            ║
+          ║  (self_kv_caches is None)                              ║
+          ║                                                        ║
+          ║  tgt_token: [1, past_len+1] — 完整历史序列              ║
+          ║  每次重算所有历史 token 的 K/V                          ║
+          ╚══════════════════════════════════════════════════════════╝
 
         【参数说明】
-          tgt_token: (1, past_len+1)  历史已生成token + 最新token
+          tgt_token: (1, 1) 或 (1, T)  新token（KV Cache模式）或完整序列（原始模式）
           enc_out: (1, S, D)  编码器输出
-          tgt_mask: (1, past_len+1)  目标序列mask
-          src_mask: (1, S)  源mask（注意维度要和编码器一致）
-          past_len: 已生成的token数（仅用于verbose，可删除）
+          tgt_mask: (1, T)  目标序列有效mask（KV Cache 模式下可为 None）
+          src_mask: (1, S)  源mask
+          past_len: 已生成的token数（KV Cache 模式下用于确定位置编码的索引）
           verbose: 是否打印
+          self_kv_caches: list of dict or None — 自注意力缓存
+          cross_kv_caches: list of dict or None — 交叉注意力缓存
 
         【返回】
-          (1, 1, D)  最后一步的解码器输出（只取最后一个位置）
+          (1, 1, D)  最后一步的解码器输出
         """
-        # 嵌入 + 位置编码
-        tgt_emb = self.embedding(tgt_token) * self.embed_scale
-        tgt_emb = self.pos_encoding(tgt_emb)
+        if self_kv_caches is not None:
+            # ═══════════════════════════════════════════════════════
+            # 模式 A：KV Cache 模式 — 只处理新 token
+            # ═══════════════════════════════════════════════════════
 
-        # 创建mask
-        tgt_attn_mask = self.create_tgt_mask(tgt_mask)
-        # src_mask 扩展batch维度以匹配
-        src_attn_mask = self.create_padding_mask(src_mask.expand(1, -1))
+            # 嵌入新 token（只有 1 个）
+            tgt_emb = self.embedding(tgt_token) * self.embed_scale  # [1, 1, D]
 
-        # 通过解码器
-        for layer in self.decoder_layers:
-            tgt_emb = layer(tgt_emb, enc_out,
-                            tgt_mask=tgt_attn_mask,
-                            src_mask=src_attn_mask,
-                            verbose=verbose)
+            # ── 位置编码：取 past_len 处的那一行 ──
+            # self.pos_encoding.pe shape: [1, max_len, D]
+            # pe[:, past_len:past_len+1, :] 取出位置 past_len 的编码 [1, 1, D]
+            # 例如：第 5 个 token → past_len=4 → 取出 PE 的第 4 行
+            tgt_emb = tgt_emb + self.pos_encoding.pe[:, past_len:past_len+1, :]
+            tgt_emb = self.pos_encoding.dropout(tgt_emb)
 
-        # 只取最后一步的输出 → (1, 1, D)
-        return tgt_emb[:, -1:, :]
+            # 单个 token 不需要因果 mask（只能看到自己，没有"未来"可偷看）
+            tgt_attn_mask = None
+            src_attn_mask = self.create_padding_mask(src_mask.expand(1, -1))
+
+            # 通过解码器各层 — self_kv_cache 在各层的 self_attn 中被原地更新
+            for i, layer in enumerate(self.decoder_layers):
+                tgt_emb = layer(
+                    tgt_emb, enc_out,
+                    tgt_mask=tgt_attn_mask,
+                    src_mask=src_attn_mask,
+                    verbose=verbose,
+                    norm_mode=self.norm_mode,
+                    self_kv_cache=self_kv_caches[i],
+                    cross_kv_cache=cross_kv_caches[i] if cross_kv_caches else None,
+                )
+
+            return tgt_emb[:, -1:, :]   # [1, 1, D]
+
+        else:
+            # ═══════════════════════════════════════════════════════
+            # 模式 B：原始模式 — 完整序列重算
+            # ═══════════════════════════════════════════════════════
+
+            tgt_emb = self.embedding(tgt_token) * self.embed_scale
+            tgt_emb = self.pos_encoding(tgt_emb)
+
+            # 创建mask
+            tgt_attn_mask = self.create_tgt_mask(tgt_mask)
+            src_attn_mask = self.create_padding_mask(src_mask.expand(1, -1))
+
+            # 通过解码器
+            for layer in self.decoder_layers:
+                tgt_emb = layer(tgt_emb, enc_out,
+                                tgt_mask=tgt_attn_mask,
+                                src_mask=src_attn_mask,
+                                verbose=verbose,
+                                norm_mode=self.norm_mode)
+
+            # 只取最后一步的输出 → (1, 1, D)
+            return tgt_emb[:, -1:, :]
 
     # ==========================================================================
     # 6d. 获取注意力权重（可视化用）
