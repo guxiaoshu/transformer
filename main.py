@@ -1,5 +1,4 @@
 
-
 import os
 import sys
 import argparse
@@ -19,9 +18,6 @@ from inference import interactive_inference, single_translate
 # 训练命令
 
 def cmd_train(resume: bool = False):
-
-
-
 
 
     print(f"    模型维度   d_model={config.d_model}, heads={config.n_heads}")
