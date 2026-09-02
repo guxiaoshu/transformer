@@ -633,6 +633,8 @@ class Trainer:
 
 
 def train_model(train_loader, val_loader, tokenizer, resume_from: str = None):
+    # 30系 Ampere 专属：让 fp32 矩阵乘走 TF32 tensor core，加速约 5~10%
+    torch.set_float32_matmul_precision('high')
 
     # 创建模型 
     model = Seq2SeqTransformer(

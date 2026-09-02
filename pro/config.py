@@ -19,7 +19,7 @@ class EduConfig:
     vocab_size: int = 32000 # 联合词表大小
     tokenizer_path: str = os.path.join(os.path.dirname(__file__), "checkpoints", "spm.model")# 词表保存路径
 
-    batch_size: int = 32#一个batch送进去几句子（pro：8G显存防OOM，64→32）
+    batch_size: int = 64#一个batch送进去几句子（8G显存：32→64 喂饱GPU，约提速30%）
 
     d_model: int = 512 # 隐藏维度（pro：256 → 512）
 

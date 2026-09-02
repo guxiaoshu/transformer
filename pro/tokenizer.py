@@ -32,15 +32,11 @@ class BpeTokenizer:
         return cls(path)
 
     def _encode(self, text: str, add_special: bool) -> List[int]:
-        if add_special:
-            # 训练时设置了 bos_id=1, eos_id=2，encode 默认加 <s> 和 </s>
-            return self.sp.encode(text, out_type=int)
-        # 不加特殊标记：兼容新旧版 sentencepiece API
-        try:
-            return self.sp.Encode(text, out_type=int)   # 新版
-        except AttributeError:
-            return self.sp.encode(text, out_type=int,
-                                  add_bos=False, add_eos=False)  # 旧版
+        # 显式指定 add_bos/add_eos，不依赖 sentencepiece 版本的默认行为。
+        # 0.2.x 的 encode 默认不加 BOS/EOS（旧版 0.1.x 默认加），不显式指定会导致
+        # 训练数据里完全没有 <s>/</s>，模型学不会"何时开始/结束"，推理直接吐 EOS。
+        return self.sp.encode(text, out_type=int,
+                              add_bos=add_special, add_eos=add_special)
 
     def encode_zh(self, text: str, add_special: bool = True) -> List[int]:
         # 中英文共用同一个 BPE 模型，所以 encode_zh 和 encode_en 逻辑相同

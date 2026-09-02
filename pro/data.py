@@ -20,10 +20,10 @@ from tokenizer import BpeTokenizer
 #   2) dataset 里只存"文本 + tokenizer 路径"，tokenizer 对象在 worker 内惰性加载，
 #      避免 sentencepiece 的 C++ 对象 pickle 失败。
 # 注意：Windows 下 num_workers>0 时，每个 worker 都是一个独立的 Python 进程，
-# 会各自重新 import torch（每个约 1GB），4 个 worker + 主进程会吃掉 4~6GB 内存。
-# 8GB 内存的机器扛不住，所以这里改成 0（主进程直接编码）。sentencepiece 编码
-# 很快（C++），不是训练瓶颈，改成 0 不会明显拖慢训练。内存大的机器可改回 2~4。
-NUM_WORKERS = 0
+# 会各自重新 import torch（每个约 1.5GB）+ pickle 一份文本。本机 16GB 内存，
+# 开 2 个 worker（约 3GB 额外）安全，能并行编码、隐藏数据加载时间。之前开 4
+# 会爆内存（4 进程 + pickle 峰值 + 同时开着的其他程序），所以定在 2，别往上加。
+NUM_WORKERS = 2
 
 
 def clean_text(text: str) -> str:
